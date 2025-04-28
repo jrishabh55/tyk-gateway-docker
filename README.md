@@ -68,7 +68,7 @@ In the example below we call the `/hello` endpoint using curl (you can use any H
 
 
 ```curl
-curl http://localhost:9000/hello -i
+curl http://localhost:9050/hello -i
 ```
 
 It returns the gateway's version and the connection status of Redis.
@@ -99,19 +99,19 @@ Content-Length: 156
 To get the list of APIs that Tyk gateway services, run the following:
 
 ```curl
-curl http://localhost:9000/tyk/apis -H "X-Tyk-Authorization: foo"
+curl http://localhost:9050/tyk/apis -H "X-Tyk-Authorization: foo"
 ```
 
 or in VS Code in a `some-file.http`:
 ```http
-http://localhost:9000/tyk/apis
+http://localhost:9050/tyk/apis
 X-Tyk-Authorization: foo
 ```
 
 The response is a JSON array of the API definitions.
 To beautify the list, use `jq`:
 ```bash
-curl http://localhost:9000/tyk/apis -H "X-Tyk-Authorization: foo" | jq .
+curl http://localhost:9050/tyk/apis -H "X-Tyk-Authorization: foo" | jq .
 ```
 
 Notice that we used the API key (secret) to connect to the gateway.

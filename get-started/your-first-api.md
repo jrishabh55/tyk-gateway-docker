@@ -82,7 +82,7 @@ $ curl http://httpbin.org/get
   "url": "http://httpbin.org/get"
 }
 
-$ curl http://localhost:9000/keyless-test/get
+$ curl http://localhost:9050/keyless-test/get
 {
   "args": {},
   "headers": {

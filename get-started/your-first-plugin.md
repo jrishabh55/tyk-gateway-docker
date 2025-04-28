@@ -8,7 +8,7 @@ What does the flow of developing a custom plugin look like?
 We have a plugin included in the middleware directory.  It's a JS plugin that injects a header.  We can cURL the API that runs the plugin:
 
 ```bash
-$ curl localhost:9000/keyless-test/get
+$ curl localhost:9050/keyless-test/get
 
 {
   "args": {},
@@ -41,13 +41,13 @@ request.SetHeaders['custom-header'] = 'hello-world'
 
 2. Reload Tyk in order to pick up the plugin changes
 ```bash
-$ curl localhost:9000/tyk/reload --header "x-tyk-authorization: foo"
+$ curl localhost:9050/tyk/reload --header "x-tyk-authorization: foo"
 {"status":"ok","message":""}
 ```
 
 3. Try the curl again:
 ```bash
-$ curl localhost:9000/keyless-test/get
+$ curl localhost:9050/keyless-test/get
 {
   "args": {},
   "headers": {

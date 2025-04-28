@@ -63,7 +63,7 @@ You can now start the Gateway:
 docker run -d \
   --name tyk_gateway \
   --network tyk \
-  -p 9000:9000 \
+  -p 9050:9050 \
   -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf \
   -v $(pwd)/apps:/opt/tyk-gateway/apps \
   docker.tyk.io/tyk-gateway/tyk-gateway:latest
@@ -84,7 +84,7 @@ As such, there is **no need** to mount any app directory.
 docker run -d \
   --name tyk_gateway \
   --network tyk \
-  -p 9000:9000 \
+  -p 9050:9050 \
   -v $(pwd)/tyk.with_dashboard.conf:/opt/tyk-gateway/tyk.conf \
   docker.tyk.io/tyk-gateway/tyk-gateway:latest
 ```
@@ -92,7 +92,7 @@ docker run -d \
 ### Check everything is up and running
 
 ```bash
-curl http://localhost:9000/hello -i
+curl http://localhost:9050/hello -i
 HTTP/1.1 200 OK
 Content-Type: application/json
 Date: Mon, 25 Jul 2022 19:16:45 GMT
@@ -122,7 +122,7 @@ If you're running an image tag older than v2.9.0, To run Tyk with rich plugins s
 An additional requirement is to provide a directory for the plugin bundles:
 ```
 $ mkdir bundles
-$ docker run -d --name tyk_gateway -p 9000:9000 --link tyk_redis:redis -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf -v $(pwd)/apps:/opt/tyk-gateway/apps -v $(pwd)/bundles:/opt/tyk-gateway/middleware/bundles -e TYKLANG='-python' docker.tyk.io/tyk-gateway/tyk-gateway`
+$ docker run -d --name tyk_gateway -p 9050:9050 --link tyk_redis:redis -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf -v $(pwd)/apps:/opt/tyk-gateway/apps -v $(pwd)/bundles:/opt/tyk-gateway/middleware/bundles -e TYKLANG='-python' docker.tyk.io/tyk-gateway/tyk-gateway`
 ```
 
 Remember to modify your `tyk.conf` to include the required global parameters, essentially:

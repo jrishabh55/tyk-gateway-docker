@@ -3,7 +3,7 @@ services:
   tyk-gateway:
     image: docker.tyk.io/tyk-gateway/tyk-gateway:v5.5.0
     ports:
-      - 9000:9000
+      - 9050:9050
     networks:
       - tyk
       - dokploy-network

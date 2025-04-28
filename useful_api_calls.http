@@ -1,14 +1,14 @@
 # Check the gateway is up and running
-http://localhost:9000/hello
+http://localhost:9050/hello
 
 ###
 # Get list of all the existing APIs
-http://localhost:9000/tyk/apis
+http://localhost:9050/tyk/apis
 X-Tyk-Authorization: foo
 
 ###
 # Create your first API in Tyk gateway
-POST http://localhost:9000/tyk/apis/ HTTP/1.1
+POST http://localhost:9050/tyk/apis/ HTTP/1.1
 X-Tyk-Authorization: foo
 Content-Type: application/json
 
