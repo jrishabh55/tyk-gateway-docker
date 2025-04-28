@@ -35,7 +35,7 @@ Let's look inside our apps directory at our protected API:
 We can try to hit this API through Tyk:
 
 ```bash
-$ curl http://localhost:8080/tyk-api-test/get
+$ curl http://localhost:9000/tyk-api-test/get
 {
     "error": "Authorization field missing"
 }
@@ -44,7 +44,7 @@ $ curl http://localhost:8080/tyk-api-test/get
 We need to create our first token through Tyk in order to access this API.
 Looking at the Gateway's [REST API reference](https://site-dev.tykbeta.com/docs/tyk-gateway-api/), we can create a token through this API:
 ```bash
-$ curl localhost:8080/tyk/keys -X POST --header "x-tyk-authorization: foo" -d '
+$ curl localhost:9000/tyk/keys -X POST --header "x-tyk-authorization: foo" -d '
 {
   "quota_max": 0,
   "rate": 2,
@@ -71,21 +71,21 @@ $ curl localhost:8080/tyk/keys -X POST --header "x-tyk-authorization: foo" -d '
 Now we can use the generated key to access our API:
 
 ```bash
-$ curl http://localhost:8080/tyk-api-test/get -H "Authorization:default3349f3ea7d734d2b88e4d1e6baebcf89"
+$ curl http://localhost:9000/tyk-api-test/get -H "Authorization:default3349f3ea7d734d2b88e4d1e6baebcf89"
 ```
 Response:
 ```json
 {
-  "args": {}, 
+  "args": {},
   "headers": {
-    "Accept": "*/*", 
-    "Accept-Encoding": "gzip", 
-    "Authorization": "default3349f3ea7d734d2b88e4d1e6baebcf89", 
-    "Host": "httpbin.org", 
-    "User-Agent": "curl/7.64.1", 
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip",
+    "Authorization": "default3349f3ea7d734d2b88e4d1e6baebcf89",
+    "Host": "httpbin.org",
+    "User-Agent": "curl/7.64.1",
     "X-Amzn-Trace-Id": "Root=1-6005f28e-666d69ee5afca26c6a022cfb"
-  }, 
-  "origin": "192.168.112.1, 99.242.139.220", 
+  },
+  "origin": "192.168.112.1, 99.242.139.220",
   "url": "http://httpbin.org/get"
 }
 ```

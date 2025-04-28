@@ -63,7 +63,7 @@ You can now start the Gateway:
 docker run -d \
   --name tyk_gateway \
   --network tyk \
-  -p 8080:8080 \
+  -p 9000:9000 \
   -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf \
   -v $(pwd)/apps:/opt/tyk-gateway/apps \
   docker.tyk.io/tyk-gateway/tyk-gateway:latest
@@ -72,7 +72,7 @@ docker run -d \
 ### Tyk OSS Gateway used by Tyk Self Managed
 
 The OSS Gateway is also used with the Tyk Self managed installation (Tyk's licensed product). We will assume that the Tyk manager service is
-installed, and running. If not, we would recommend that you follow the [instructions](https://tyk.io/docs/tyk-self-managed/install/) for Tyk manager installation or this [doc](https://github.com/TykTechnologies/tyk-dashboard-docker). 
+installed, and running. If not, we would recommend that you follow the [instructions](https://tyk.io/docs/tyk-self-managed/install/) for Tyk manager installation or this [doc](https://github.com/TykTechnologies/tyk-dashboard-docker).
 
 **FYI** For a quick docker compsoe of Tyk Self managed switch to [Tyk docker demo repo](https://github.com/TykTechnologies/tyk-pro-docker-demo).
 
@@ -84,7 +84,7 @@ As such, there is **no need** to mount any app directory.
 docker run -d \
   --name tyk_gateway \
   --network tyk \
-  -p 8080:8080 \
+  -p 9000:9000 \
   -v $(pwd)/tyk.with_dashboard.conf:/opt/tyk-gateway/tyk.conf \
   docker.tyk.io/tyk-gateway/tyk-gateway:latest
 ```
@@ -92,7 +92,7 @@ docker run -d \
 ### Check everything is up and running
 
 ```bash
-curl http://localhost:8080/hello -i
+curl http://localhost:9000/hello -i
 HTTP/1.1 200 OK
 Content-Type: application/json
 Date: Mon, 25 Jul 2022 19:16:45 GMT
@@ -122,7 +122,7 @@ If you're running an image tag older than v2.9.0, To run Tyk with rich plugins s
 An additional requirement is to provide a directory for the plugin bundles:
 ```
 $ mkdir bundles
-$ docker run -d --name tyk_gateway -p 8080:8080 --link tyk_redis:redis -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf -v $(pwd)/apps:/opt/tyk-gateway/apps -v $(pwd)/bundles:/opt/tyk-gateway/middleware/bundles -e TYKLANG='-python' docker.tyk.io/tyk-gateway/tyk-gateway`
+$ docker run -d --name tyk_gateway -p 9000:9000 --link tyk_redis:redis -v $(pwd)/tyk.standalone.conf:/opt/tyk-gateway/tyk.conf -v $(pwd)/apps:/opt/tyk-gateway/apps -v $(pwd)/bundles:/opt/tyk-gateway/middleware/bundles -e TYKLANG='-python' docker.tyk.io/tyk-gateway/tyk-gateway`
 ```
 
 Remember to modify your `tyk.conf` to include the required global parameters, essentially:

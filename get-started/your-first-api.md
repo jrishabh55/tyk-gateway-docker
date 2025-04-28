@@ -18,7 +18,7 @@ protected-api.json
 Let's look at our keyless API
 
 `"apps/keyless-plugin-api.json"`
-```json 
+```json
 {
     "name": "Tyk Test Keyless API",
     "api_id": "keyless",
@@ -82,7 +82,7 @@ $ curl http://httpbin.org/get
   "url": "http://httpbin.org/get"
 }
 
-$ curl http://localhost:8080/keyless-test/get
+$ curl http://localhost:9000/keyless-test/get
 {
   "args": {},
   "headers": {
