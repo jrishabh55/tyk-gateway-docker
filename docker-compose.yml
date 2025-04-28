@@ -6,6 +6,7 @@ services:
       - 9000:8080
     networks:
       - tyk
+      - dokploy-network
     volumes:
       - ./tyk.standalone.conf:/opt/tyk-gateway/tyk.conf
       - ./apps:/opt/tyk-gateway/apps
@@ -20,8 +21,11 @@ services:
     image: redis:6.2.7-alpine
     networks:
       - tyk
+      - dokploy-network
     ports:
       - 6379:6379
 
 networks:
   tyk:
+  dokploy-network:
+    external: true
